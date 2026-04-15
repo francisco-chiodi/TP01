@@ -1,23 +1,76 @@
-#
-TPO1
+#TPO1
 name_lastname = input("input name and last name: ")
+
+A1 = "Ciertas enfermedades infecciosas y parasitarias"
+B1 = "Ciertas enfermedades infecciosas y parasitarias"
+C1 = "Tumores [neoplasias]"
+D1 = "Tumores [neoplasias]" , "Enfermedades de la sangre y de los órganos hematopoyéticos y/n ciertos transtornos que afectan el mecanismo de la inmunidad "
+E1 = "Enfermedades endocrinas, nutricionales y metabólicas"
+F1 = "Trastornos mentales y del comportamiento"
+G1 = "Enfermedades del sistema nervioso"
+H1 = "Enfermedades del ojo y sus anexos" , "Enfermedades del oído y de la apófisis mastoides"
+I1 = "Enfermedades del sistema circulatorio"
+
+
 ICD10_code = input("input ICD10 code: ") #H70.1
 acces_chapter_block = ICD10_code[0]
-#original_mount = int(input("input ammount"))
-chapters = "capitulo I", "capitulo II"
+if ICD10_code[0] == "A":
+    print(A1)
+elif ICD10_code[0] == "B":
+    print(B1)
+elif ICD10_code[0] == "C":
+    print(C1)
+elif ICD10_code[0] == "E":
+    print(E1)
+elif ICD10_code[0] == "F":
+    print(F1)
+elif ICD10_code[0] == "G":
+    print(G1)
+elif ICD10_code[0] == "H":
+    print(H1)
+elif ICD10_code[0] == "I":
+    print(I1)
+elif ICD10_code[0] == "J":
+    print(J1)
+elif ICD10_code[0] == "K":
+    print(K1)
 
-if ICD10_code[0] ==
-    print(chapters[0])
+
+
+if ICD10_code[0] == "D" and ICD10_code[1] == "5":
+    print("Enfermedades de la sangre y de los órganos hematopoyéticos y/n ciertos transtornos que afectan el mecanismo de la inmunidad ")
 else:
-    print(chapters[1])
+    print("Tumores [neoplasias]")
+
+
+
+
+
+
+#if D[0] != 4:
+   # print(D[1])
+
+
+
+
+
+#if acces_chapter_block = a
+   # print("acces")
+#else if: acce
+
+
+
+#original_mount = int(input("input ammount"))
+#chapters = "capitulo I", "capitulo II"
+
 
 """
-CAPITULO I = Ciertas enfermedades infecciosas y parasitarias (A00–B99)
+CAPITULO I = Ciertas enfermedades infecciosas y parasitarias (A00–B99) 
 
-CAPITULO II = Tumores [neoplasias] (C00–D48)
+CAPITULO II = Tumores [neoplasias] (C00–D48) 
 
 CAPÍTULO III = Enfermedades de la sangre y de los órganos hematopoyéticos,
- y ciertos trastornos que afectan el mecanismo de la inmunidad (D50–D89)
+ y ciertos trastornos que afectan el mecanismo de la inmunidad (D50–D89) 
  
 CAPITULO IV  Enfermedades endocrinas, nutricionales y metabólicas
 (E00–E90)
