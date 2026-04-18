@@ -1,104 +1,82 @@
-#TPO1
-name_lastname = input("input name and last name: ")
+beneficiario = input("Ingrese nombre completo")
+codigo = input("Ingrese ICD10 X##.##: ") #L00-L99  #P00–P96
+monto_base = int(input("Ingrese un monto base"))
 
-A1 = "CAPITULO I Ciertas enfermedades infecciosas y parasitarias"
-B1 = "CAPITULO I Ciertas enfermedades infecciosas y parasitarias"
-E1 = "CAPITULO IV Enfermedades endocrinas, nutricionales y metabólicas"
-F1 = "CAPITULO V Trastornos mentales y del comportamiento"
-G1 = "Capítulo VI Enfermedades del sistema nervioso"
-H1 = "Capítulo VII Enfermedades del ojo y sus anexos" , "Enfermedades del oído y de la apófisis mastoides"
-I1 = "CAPÍTULO VIII Enfermedades del sistema circulatorio"
-J1 = "CAPITULO X Enfermedades del sistema respiratorio"
-K1 = "CAPÍTULO XI Enfermedades del sistema digestivo"
-L1 = "CAPÍTULO XII Enfermedades de la piel y del tejido subcutáneo"
-M1 = "CAPÍTULO XIII Enfermedades del sistema osteomuscular y del tejido conjuntivo"
-N1 = "CAPÍTULO XIV Enfermedades del sistema genitourinario "
-O1 = "CAPÍTULO XV Embarazo, parto y puerperio"
-P1 ="CAPÍTULO XVI Ciertas afecciones originadas en el período perinatal"
-Q1 ="CAPÍTULO XVII Malformaciones congénitas, deformidades y anomalías cromosómicas"
-R1 ="CAPÍTULO XVIII Síntomas, signos y hallazgos anormales clínicos y de laboratorio, no clasificados en otra parte"
-Z1 = "CAPÍTULO XXI Factores que influyen en el estado de salud y contacto con los servicios de salud"
-U1 = "Capítulo XXII Códigos para propósitos especiales (U00–U99)"
+letra = codigo[0]
+bloque = int(codigo[1] + codigo[2])
 
 
-ICD10_code = input("input ICD10 code: ") #H70.1
-acces_chapter_block = ICD10_code[0]
-if ICD10_code[0] == "A":
-    print(A1)
-elif ICD10_code[0] == "B":
-    print(B1)
-elif ICD10_code[0] == "E":
-    print(E1)
-elif ICD10_code[0] == "F":
-    print(F1)
-elif ICD10_code[0] == "G":
-    print(G1)
-elif ICD10_code[0] == "H":
-    print(H1)
-elif ICD10_code[0] == "I":
-    print(I1)
-elif ICD10_code[0] == "J":
-    print(J1)
-elif ICD10_code[0] == "K":
-    print(K1)
-elif ICD10_code[0] == "M":
-    print(M1)
-elif ICD10_code[0] == "L":
-    print(L1)
-elif ICD10_code[0] == "N":
-    print(N1)
-elif ICD10_code[0] == "O":
-    print(O1)
-elif ICD10_code[0] == "P":
-    print(P1)
-elif ICD10_code[0] == "Q":
-    print(Q1)
-elif ICD10_code[0] == "R":
-    print(R1)
-elif ICD10_code[0] == "N":
-    print(N1)
-elif ICD10_code[0] == "Z":
-    print(Z1)
-elif ICD10_code[0] == "U":
-    print(U1)
+# Obtención del porcentaje
 
-if ICD10_code[0] == "D" and ICD10_code[1] == "5":
-    print("CAPÍTULO III: Enfermedades de la sangre y de los órganos hematopoyéticos y/n ciertos transtornos que afectan el mecanismo de la inmunidad ")
+
+porcentaje = int(codigo[5])
+
+monto_final = monto_base + 25000
+
+if "A" <= letra <= "L":
+    monto_final += 25000
+elif letra == "U":
+    monto_final += 100000
+elif "M" <= letra <= "Z":
+    monto_final += 40000
+
+monto_final += monto_final * porcentaje / 100
+
+# Determinación del capítulo
+if letra == "A" or letra == "B":
+    capitulo = "Capítulo I: Ciertas enfermedades infecciosas y parasitarias"
+elif letra == "C":
+    capitulo = "Capítulo II: Neoplasias[neoplasias]"
+elif letra == "D":
+    if bloque <= 48:
+        capitulo = "Capítulo II: Neoplasias[neoplasias]"
+    else:
+        capitulo = "Capítulo III: Enfermedades de la sangre y de los órganos hematopoyéticos y ciertos trastornos que afectan el mecanismo de la inmunidad"
+elif letra == "E":
+    capitulo = "Capítulo IV: Enfermedades endocrinas, nutricionales y metabólicas"
+elif letra == "F":
+    capitulo = "Capítulo V: Trastornos mentales y del comportamiento"
+elif letra == "G":
+    capitulo = "Capítulo VI: Enfermedades del sistema nervioso"
+elif letra == "H":
+    if bloque <= 59:
+        capitulo = "Capítulo VII: Enfermedades del ojo y sus anexos"
+    else:
+        capitulo = "Capítulo VIII: Enfermedades del oído y de la apófisis mastoides"
+elif letra == "I":
+    capitulo = "Capítulo IX: Enfermedades del sistema circulatorio"
+elif letra == "J":
+    capitulo = "Capítulo X: Enfermedades del sistema respiratorio"
+elif letra == "K":
+    capitulo = "Capítulo XI: Enfermedades del sistema digestivo"
+elif letra == "L":
+    capitulo = "Capítulo XII: Enfermedades de la piel y del tejido subcutáneo"
+elif letra == "M":
+    capitulo = "Capítulo XIII: Enfermedades del sistema osteomuscular y del tejido conjuntivo"
+elif letra == "N":
+    capitulo = "Capítulo XIV: Enfermedades del sistema genitourinario"
+elif letra == "O":
+    capitulo = "Capítulo XV: Embarazo, parto y puerperio"
+elif letra == "P":
+    capitulo = "Capítulo XVI: Ciertas afecciones originadas en el período perinatal"
+elif letra == "Q":
+    capitulo = "Capítulo XVII: Malformaciones congénitas, deformidades y anomalías cromosómicas"
+elif letra == "R":
+    capitulo = "Capítulo XVIII: Síntomas, signos y hallazgos anormales clínicos y de laboratorio, no clasificados en otra parte"
+elif letra == "S" or letra == "T":
+    capitulo = "Capítulo XIX: Traumatismos, envenenamientos y algunas otras consecuencias de causas externas"
+elif letra == "V" or letra == "W" or letra == "X" or letra == "Y":
+    capitulo = "Capítulo XX: Causas externas de morbilidad y de mortalidad"
+elif letra == "Z":
+    capitulo = "Capítulo XXI: Factores que influyen en el estado de salud y contacto con los servicios de salud"
+elif letra == "U":
+    capitulo = "Capítulo XXII: Códigos para propósitos especiales"
 else:
-    print("CAPITULO II: Tumores [neoplasias]")
-
-if ICD10_code[0] == "S" or ICD10_code[0] == "T":
-    print("CAPÍTULO XIX Traumatismos, envenenamientos y algunas otras consecuencias de causas externas")
-
-if ICD10_code[0] == "V" or ICD10_code[0] == "Y":
-    print("CAPÍTULO XX Causas externas de morbilidad y de mortalidad (V01–Y98)")
-
-"""
-CAPITULO I Ciertas enfermedades infecciosas y parasitarias (A00–B99) 
-CAPITULO II Tumores [neoplasias] (C00–D48) 
-CAPÍTULO III Enfermedades de la sangre y de los órganos hematopoyéticos,
- y ciertos trastornos que afectan el mecanismo de la inmunidad (D50–D89) 
-CAPITULO IV  Enfermedades endocrinas, nutricionales y metabólicas (E00–E90)
-CAPITULO V  Trastornos mentales y del comportamiento (F00–F99)
-Capítulo VI  Enfermedades del sistema nervioso (G00–G99)
-Capítulo VII Enfermedades del ojo y sus anexos (H00–H59)
-CAPÍTULO VIII Enfermedades del oído y de la apófisis mastoides (H60–H95)
-CAPÍTULO IX Enfermedades del sistema circulatorio (I00–I99)
-CAPITULO X Enfermedades del sistema respiratorio (J00–J99)
-CAPÍTULO XI Enfermedades del sistema digestivo (K00–K93)
-CAPÍTULO XII Enfermedades de la piel y del tejido subcutáneo (L00-L99)
-CAPÍTULO XIII Enfermedades del sistema osteomuscular y del tejido conjuntivo (M00-M99)
-CAPÍTULO XIV Enfermedades del sistema genitourinario (N00-N99)
-CAPÍTULO XV Embarazo, parto y puerperio(O00–O99)
-CAPÍTULO XVI Ciertas afecciones originadas en el período perinatal (P00–P96)
-CAPÍTULO XVII Malformaciones congénitas, deformidades y anomalías cromosómicas (Q00–Q99)
-CAPÍTULO XVIII Síntomas, signos y hallazgos anormales clínicos y de 
-laboratorio, no clasificados en otra parte(R00–R99)
-CAPÍTULO XIX Traumatismos, envenenamientos y algunas otras consecuencias de causas externas (S00–T98)
-CAPÍTULO XX Causas externas de morbilidad y de mortalidad (V01–Y98)
-CAPÍTULO XXI Factores que influyen en el estado de salud y contacto con los servicios de salud (Z00–Z99)
-Capítulo XXII Códigos para propósitos especiales (U00–U99)
-"""
+    capitulo = "Capítulo no válido"
 
 
 
+print("Beneficiario:", beneficiario)
+print("Codigo:", codigo)
+print("Capitulo:", capitulo) #modificar nombres de capitulos
+print("Monto a pagar: ", monto_final)
